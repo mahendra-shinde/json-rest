@@ -77,7 +77,7 @@
         }
         
         @GetMapping("/{id}")
-        ///The final URL: http://localhost:8080/api/customer/101
+        ///The final URL: http://localhost:8080/api/customers/101
         // 101 could be replaced with any number
         public String getCustomer(@PathVariable("id") Integer id) {
             System.out.println("Invoked: getCustomer()");
@@ -85,7 +85,7 @@
         }
         
         @PutMapping("/{id}")
-        ///The final URL: http://localhost:8080/api/customer/101
+        ///The final URL: http://localhost:8080/api/customers/101
         // 101 could be replaced with any number
         public String putCustomer(@PathVariable("id") Integer id) {
             System.out.println("Invoked: putCustomer()");
@@ -93,7 +93,7 @@
         }
         
         @DeleteMapping("/{id}")
-        ///The final URL: http://localhost:8080/api/customer/101
+        ///The final URL: http://localhost:8080/api/customers/101
         // 101 could be replaced with any number
         public String deleteCustomer(@PathVariable("id") Integer id) {
             System.out.println("Invoked: deleteCustomer");
@@ -113,8 +113,8 @@
 
 7.  Use Postman to fire following request:
 
-    GET http://localhost:8080/api/customer/
-    GET http://localhost:8080/api/customer/101
-    PUT http://localhost:8080/api/customer/101
-    DELETE http://localhost:8080/api/customer/101
-    OPTIONS http://localhost:8080/api/customer/101
+    GET http://localhost:8080/api/customers/
+    GET http://localhost:8080/api/customers/101
+    PUT http://localhost:8080/api/customers/101
+    DELETE http://localhost:8080/api/customers/101
+    OPTIONS http://localhost:8080/api/customers/101
