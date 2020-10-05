@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JSON Parsing</title>
+    <script>
+        function convertToString(frm){
+            emp = new Object();
+            emp.firstName = frm.fn.value.trim() ;
+            emp.lastName = frm.ln.value.trim();
+            emp.dob = frm.dob.value;
+
+            var str = JSON.stringify(emp);
+            document.getElementById('output').innerHTML = str;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        First name: <input type="text" id="fn" /><br/>
+        Last name: <input type="text" id="ln" /><br/>
+        Date of Birth: <input type="date" id="dob" /><br/>
+
+        <input type="button" onclick="convertToString(this.form)" value="Save" />
+
+    </form>
+
+    <div id="output">
+
+    </div>
+</body>
+</html>

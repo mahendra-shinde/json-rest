@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Ajax Demo</title>
     <script>
-        function request(url){
+        function request(url) {
             req = new XMLHttpRequest();
-            req.open("GET",url,true);
-            req.onreadystatechange = function(){
+            req.open("GET", url, true);
+            req.onreadystatechange = function () {
                 //ReadyState 0 : Uninitialized
                 //ReadyState 1 : Connection Open
                 //ReadyState 2 : Sending request
                 //ReadyState 3 : Start receiving the response
                 //ReadyState 4 : Response is completed
                 // ReadyState '4' refers to FINAL state where DATA (RESPONSE) is already received from server
-                if(req.readyState == 4){
+                if (req.readyState == 4) {
                     // VAR keyword is USED for LOCAL Variables
                     // Variables declared without VAR keyword are GLOBAL Vars
-                     userList = JSON.parse(req.responseText);   
-                     alert("Found records "+userList.length);
+                    userList = JSON.parse(req.responseText);
+                    alert("Found records " + userList.length);
                 }
             }
             req.send();
@@ -27,12 +28,13 @@
 
     </script>
 </head>
+
 <body>
     <h1>Ajax Demo</h1>
-    <button id="b1" onclick="request('https://jsonplaceholder.typicode.com/users/')" >Load data</button>
+    <button id="b1" onclick="request('https://jsonplaceholder.typicode.com/users/')">Load data</button>
 
-    <button id="b2" onclick="request('https://jsonplaceholder.typicode.com/todos/')" >Load data</button>
-
+    <button id="b2" onclick="request('https://jsonplaceholder.typicode.com/todos/')">Load data</button>
 
 </body>
+
 </html>
