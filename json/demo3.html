@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JSON Parsing</title>
+    <script>
+        function convert(frm){
+            var txtstring = frm.txt1.value.trim();
+            var emp = JSON.parse(txtstring);
+            frm.fn.value = emp.firstName;
+            frm.ln.value= emp.lastName;
+            frm.dob.value = emp.dob;
+        }
+
+    </script>
+</head>
+<body>
+    <Form>
+    <textarea id="txt1" rows="3" cols="40"></textarea><br/>
+    <input type="button" value="convert" onclick="convert(this.form)"/><br/>
+
+    First Name: <input type="text" id="fn" readonly/><br/>
+    Last Name: <input type="text" id="ln" readonly/><br/>
+    Date of Birth: <input type="date" id="dob" readonly/><br/>
+    </Form>
+</body>
+</html>

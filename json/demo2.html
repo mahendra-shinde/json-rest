@@ -7,6 +7,7 @@
     <script>
         function convertToString(frm){
             emp = new Object();
+            //var fm1 = document.forms['fm1'];
             emp.firstName = frm.fn.value.trim() ;
             emp.lastName = frm.ln.value.trim();
             emp.dob = frm.dob.value;
@@ -17,7 +18,7 @@
     </script>
 </head>
 <body>
-    <form>
+    <form id="fm1">
         First name: <input type="text" id="fn" /><br/>
         Last name: <input type="text" id="ln" /><br/>
         Date of Birth: <input type="date" id="dob" /><br/>
