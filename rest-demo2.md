@@ -32,3 +32,15 @@
 		return customers;		
 	}
     ```
+
+4.  Replace the old "getCustomer()" method (second GET method) with following code
+
+    ```java
+    @GetMapping("/{id}")
+	///The final URL: http://localhost:8080/api/customers/1
+	// 1 could be replaced with any number
+	public Customer getCustomer(@PathVariable("id") Integer id) {
+		System.out.println("Invoked: getCustomer()");
+		return customers.get(id-1);
+	}
+    ```
