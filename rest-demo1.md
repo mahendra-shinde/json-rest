@@ -59,5 +59,62 @@
         
         
     }
-
     ```
+
+4.  Create a Class `CustomerController` in package `com.mahendra.restdemo1.controllers`
+
+    ```java
+    @RestController
+    @RequestMapping("/api/customers/")
+    ///The final URL: http://localhost:8080/api/customers
+    public class CustomerController {
+
+        @GetMapping("/")
+        ///The final URL: http://localhost:8080/api/customers/
+        public String getCustomers() {
+            System.out.println("Invoked: getCustomers()");
+            return "List of Customers";
+        }
+        
+        @GetMapping("/{id}")
+        ///The final URL: http://localhost:8080/api/customer/101
+        // 101 could be replaced with any number
+        public String getCustomer(@PathVariable("id") Integer id) {
+            System.out.println("Invoked: getCustomer()");
+            return "Customer details of "+id;
+        }
+        
+        @PutMapping("/{id}")
+        ///The final URL: http://localhost:8080/api/customer/101
+        // 101 could be replaced with any number
+        public String putCustomer(@PathVariable("id") Integer id) {
+            System.out.println("Invoked: putCustomer()");
+            return "Modifying customer "+id;
+        }
+        
+        @DeleteMapping("/{id}")
+        ///The final URL: http://localhost:8080/api/customer/101
+        // 101 could be replaced with any number
+        public String deleteCustomer(@PathVariable("id") Integer id) {
+            System.out.println("Invoked: deleteCustomer");
+            return "Deleting customer "+id;
+        }
+           
+    }
+    ```
+
+5.  Open `application.properties` file from `src/main/resources` and add following line:
+
+    ```ini
+    server.port=8080
+    ```
+
+6.  Run application as Spring boot project
+
+7.  Use Postman to fire following request:
+
+    GET http://localhost:8080/api/customer/
+    GET http://localhost:8080/api/customer/101
+    PUT http://localhost:8080/api/customer/101
+    DELETE http://localhost:8080/api/customer/101
+    OPTIONS http://localhost:8080/api/customer/101
