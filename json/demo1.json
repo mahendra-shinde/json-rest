@@ -1,0 +1,19 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "Sholey",
+            "ratings": 3
+        },
+        {
+            "id": 2,
+            "title": "Aag",
+            "ratings": 1
+        },
+        {
+            "id": 3,
+            "title": "End Game",
+            "ratings": 3
+        }
+    ]
+}
