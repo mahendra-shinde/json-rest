@@ -9,9 +9,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="loans")
 public class LoanList implements Serializable{
 	
-	@XmlElement(name="loan")
 	private List<Loan> list = null;
 
+	@XmlElement(name="loan")
+	public List<Loan> getList() {
+		return list;
+	}
 	
 	public void setList(List<Loan> list) {
 		this.list = list;
