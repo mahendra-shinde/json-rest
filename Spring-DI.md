@@ -38,4 +38,4 @@
     }
     ```
 
-*   Only those classes with annotations `@Controller`, `@Service`, `@Repository`, `@Controller` or `@RestController` could be used for auto-wiring.
+*   Only those classes with annotations `@Component`, `@Service`, `@Repository`, `@Controller` or `@RestController` could be used for auto-wiring.
