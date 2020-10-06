@@ -19,6 +19,10 @@ public class LoanRepository {
 		loans.add(new Loan(103, "Rakool",15000D, 3, 15D));
 	}
 	
+	public List<Loan> getAll(){
+		return loans;
+	}
+	
 	public Loan save(Loan loan) {
 		loans.add(loan);
 		return loan;

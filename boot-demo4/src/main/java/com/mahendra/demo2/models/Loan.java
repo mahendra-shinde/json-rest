@@ -1,5 +1,11 @@
 package com.mahendra.demo2.models;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+// Mark current class for conversion to XML element
+// MUST BE POJO
+@XmlRootElement
 public class Loan {
 
 	private Integer loanId;

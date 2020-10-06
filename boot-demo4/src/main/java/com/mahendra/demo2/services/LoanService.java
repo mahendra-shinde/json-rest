@@ -1,5 +1,7 @@
 package com.mahendra.demo2.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class LoanService {
 		return dao.save(loan);
 	}
 	
+	
+	public List<Loan> getAll(){
+		
+		return dao.getAll();
+	}
 	public Loan updateCustomer(String customer, int loanId) {
 		Loan temp = dao.findById(loanId);
 		if(temp==null)
