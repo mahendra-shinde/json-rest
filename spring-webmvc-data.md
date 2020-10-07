@@ -142,7 +142,7 @@
         }
         
         @GetMapping("/edit")
-        public String edit(@RequestParam("id") int accNum, Model map) {
+        public String edit(@RequestParam("accNum") int accNum, Model map) {
             
             return "edit/form";
             
