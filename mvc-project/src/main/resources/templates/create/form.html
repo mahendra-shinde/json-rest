@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create new deposit</title>
+</head>
+<body>
+<h2>Create a deposit</h2>
+<form action="#" th:action="@{/deposit/create}" method="post" th:object="${deposit}">
+
+Account number : <input type="text" th:field="*{accNumber}"  required /><br/>
+Account holder name: <input type="text" th:field="*{custName}" required /><br/>
+Balance: <input type="text" th:field="*{amount}" required /><br/>
+ <input type="submit" value="Submit"/>
+
+</form>
+</body>
+</html>

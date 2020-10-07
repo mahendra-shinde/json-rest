@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List of deposits</title>
+</head>
+<body>
+<h2>List of deposits</h2>
+<h3 th:text="${msg}" ></h3>
+<table>
+<thead>
+<tr>
+<td>Acc Number</td>
+<td>Customer Name</td>
+<td>Amount</td>
+<td>Actions</td>
+</tr>
+</thead>
+<tbody>
+<tr th:each="dep: ${deposits}">
+  <td th:text="${dep.accNumber}"></td>
+  <td th:text="${dep.custName}"></td>
+  <td th:text="${dep.amount}"></td>
+  <td>
+  	<a th:href="@{/deposit/edit?accNum={acc}(acc=${dep.accNumber}) }">edit</a>
+  	<a th:href="@{/deposit/delete?accNum={acc}(acc=${dep.accNumber}) }">delete</a>
+  </td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
