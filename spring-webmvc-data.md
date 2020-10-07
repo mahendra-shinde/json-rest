@@ -274,3 +274,49 @@
 16. Run the application and use URL to create sample record:
 
     http://localhost:8080/deposit/create
+
+17. Implementing EDIT functionality, modify the DepositService with additional method:
+
+    ```java
+    public Deposit findById(int accNumber) {
+		Optional<Deposit> data = dao.findById(accNumber);
+		if(data.isPresent())
+			return data.get();
+		return null;
+	}
+    ```
+
+18. Modify Controller class 
+
+    ```java
+    //Replace this OLD method
+    @GetMapping("/edit")
+	public String edit(@RequestParam("accNum") int accNum, Model map) {
+		Deposit deposit = service.findById(accNum);
+		map.addAttribute("deposit",deposit);
+		return "edit/form";
+	}
+	
+    //NEW Method
+	@PostMapping("/edit")
+	public String submitEdit(@ModelAttribute("deposit") Deposit deposit, Model map) {
+		service.update(deposit);
+		map.addAttribute("msg","Deposit "+ deposit.getAccNumber()+" Updated!");
+		return "redirect:/deposit/list";
+	}
+    ```
+
+19. Modify the `edit/form.html`
+
+    ```html
+    <form action="#" th:action="@{/deposit/edit}" method="post" th:object="${deposit}">
+
+    Account number : <span th:text="*{accNumber}"></span> <br/>
+    <input type="hidden" th:field="*{accNumber}" />
+    Account holder name: <input type="text" th:field="*{custName}" required /><br/>
+    Balance: <input type="text" th:field="*{amount}" required /><br/>
+    <input type="submit" value="Submit"/>
+
+    </form>
+    ```
+10. Run as Spring boot application
