@@ -1,5 +1,6 @@
 ## application.properties for Oracle DB
 
+```ini
 spring.datasource.url=jdbc:oracle:thin:localhost:1521/xe
 spring.datasource.username=test
 spring.datasource.password=welcome123
@@ -10,3 +11,4 @@ spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
 spring.jpa.show-sql=true
 ## Create the TABLES on-the-fly!!!!
 spring.jpa.generate-ddl=true
+```

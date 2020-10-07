@@ -1,5 +1,6 @@
 ## application.properties for MySQL DB
 
+```ini
 spring.datasource.url=jdbc:mysql://localhost:3306/[dbname]
 spring.datasource.username=root
 spring.datasource.password=welcome123
@@ -10,3 +11,4 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect
 spring.jpa.show-sql=true
 ## Create the TABLES on-the-fly!!!!
 spring.jpa.generate-ddl=true
+```
