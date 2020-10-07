@@ -143,9 +143,7 @@
         
         @GetMapping("/edit")
         public String edit(@RequestParam("accNum") int accNum, Model map) {
-            
             return "edit/form";
-            
         }
     }
 
@@ -220,3 +218,59 @@
     ```
 
 12. Test url http://localhost:8080/deposit/list
+
+13. Implementing CREATE functionality, modify my controller class with NEW method:
+
+    ```java
+    //Replace OLD
+    @GetMapping("/create")
+	public String create(Model map) {
+		Deposit deposit = new Deposit();
+		map.addAttribute("deposit",deposit);
+		return "create/form";
+	}
+	
+    //NEW
+	@PostMapping("/create")
+	public String submitCreate(@ModelAttribute("deposit") Deposit deposit, Model map) {
+		service.save(deposit);
+        //Add session variable msg for success message!
+		map.addAttribute("msg","New deposit "+ deposit.getAccNumber()+" created!");
+		return "redirect:/deposit/list";
+	}
+    ```
+
+14. Implement the FORM page `src/main/resources/templates/create/form.html`
+
+    ```html
+    <!DOCTYPE html>
+    <html xmlns:th="https://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+    <title>Create new deposit</title>
+    </head>
+    <body>
+    <h2>Create a deposit</h2>
+    <form action="#" th:action="@{/deposit/create}" method="post" th:object="${deposit}">
+
+    Account number : <input type="text" th:field="*{accNumber}"  required /><br/>
+    Account holder name: <input type="text" th:field="*{custName}" required /><br/>
+    Balance: <input type="text" th:field="*{amount}" required /><br/>
+    <input type="submit" value="Submit"/>
+
+    </form>
+    </body>
+    </html>
+    ```
+
+15. For displaying success message, edit list/index.html page, add following line:
+
+    `<h3 th:text="${msg}"></h3>`
+
+    Add a new CLASS LEVEL annotation on Controller class
+
+    `@SessionAttributes("msg")`
+
+16. Run the application and use URL to create sample record:
+
+    http://localhost:8080/deposit/create
