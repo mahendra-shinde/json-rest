@@ -158,3 +158,65 @@
     http://localhost:8080/deposit/edit?accNum=101
 
     
+8.  Implementing `list` action inside controller
+
+    ```java
+	@Autowired private DepositService service;
+	
+	@GetMapping("/list")
+	public String listAll(Model map) {
+		List<Deposit> deposits = service.getAll();
+		map.addAttribute("deposits",deposits);
+		return "list/index";
+	}
+    ```
+
+9.  Modiy the `list/index.html` page
+
+    ```html
+    <!DOCTYPE html>
+    <html xmlns:th="https://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+    <title>List of deposits</title>
+    </head>
+    <body>
+    <h2>List of deposits</h2>
+
+    <table>
+    <thead>
+    <tr>
+    <td>Acc Number</td>
+    <td>Customer Name</td>
+    <td>Amount</td>
+    <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dep: ${deposits}">
+    <td th:text="${dep.accNumber}"></td>
+    <td th:text="${dep.custName}"></td>
+    <td th:text="${dep.amount}"></td>
+    <td>
+        <a th:href="@{/deposit/edit?accNum={acc}(acc=${dep.accNumber}) }">edit</a>
+        <a th:href="@{/deposit/delete?accNum={acc}(acc=${dep.accNumber}) }">delete</a>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </body>
+    </html>
+    ```
+
+10. Run application and access this URL to create new records
+
+    http://localhost:8080/h2-console
+
+11. Run following queries:
+
+    ```sql
+    insert into deposits values (1001, 10000, 'Akshay' );
+    insert into deposits values (1002, 12000, 'Disha' );
+    ```
+
+12. Test url http://localhost:8080/deposit/list
