@@ -155,6 +155,6 @@
 
     http://localhost:8080/deposit/create
     http://localhost:8080/deposit/list
-    http://localhost:8080/deposit/edit
+    http://localhost:8080/deposit/edit?accNum=101
 
     
