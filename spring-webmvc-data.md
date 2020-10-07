@@ -319,4 +319,15 @@
 
     </form>
     ```
-10. Run as Spring boot application
+20. Run as Spring boot application
+
+21. Add DELETE functionality in controller class.
+
+    ```java
+    @GetMapping("/delete")
+	public String delete(@RequestParam("accNum")int accNum, Model map) {
+		service.delete(accNum);
+		map.addAttribute("msg","Deposit "+ accNum+" Deleted!");
+		return "redirect:/deposit/list";
+	}
+    ```
