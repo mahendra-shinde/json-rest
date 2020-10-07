@@ -100,3 +100,61 @@
     }
 
     ```
+
+5.  View page structure
+
+    5.1 Create folders "list", "create" & "edit" inside `src/main/resources/templates` folder
+
+    5.2 Create HTML files list\index.html, create\form.html & edit\form.html
+
+    Example: list\index.html
+
+    ```html
+    <!DOCTYPE html>
+    <html xmlns:th="https://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+    <title>List of deposits</title>
+    </head>
+    <body>
+    <h2>List of deposits</h2>
+    </body>
+    </html>
+    ```
+
+6.  Create the controller class with minimal coding (non-functional)
+
+    ```java
+    @Controller
+    @RequestMapping("/deposit")
+    public class DepositController {
+
+        @GetMapping("/list")
+        public String listAll(Model map) {
+            
+            return "list/index";
+        }
+        
+        @GetMapping("/create")
+        public String create(Model map) {
+            
+            return "create/form";
+        }
+        
+        @GetMapping("/edit")
+        public String edit(@RequestParam("id") int accNum, Model map) {
+            
+            return "edit/form";
+            
+        }
+    }
+
+    ```
+
+7.  Run as Spring Boot Application and test following URL
+
+    http://localhost:8080/deposit/create
+    http://localhost:8080/deposit/list
+    http://localhost:8080/deposit/edit
+
+    
