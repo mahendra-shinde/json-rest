@@ -78,3 +78,9 @@
     </body>
     </html>
     ```
+
+7.  Run as Spring Boot Application and test URL:
+    
+    http://localhost:8080/apply-loan
+
+    
