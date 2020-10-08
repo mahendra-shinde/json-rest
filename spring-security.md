@@ -75,7 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        .and().formLogin().disable();
 	}
 
-    @bean
 	public DataSource securityDS() {
 		DataSource ds = new SimpleDriverDataSource(new ClientDriver(),
 				"jdbc:derby://localhost:1527/scdb","sa","password@1234");
