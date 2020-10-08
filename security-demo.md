@@ -38,7 +38,7 @@
 
 5.  Create New Spring starter project
 
-    spring-security, spring-web, h2
+    spring-security, spring-web, h2, data-jpa
 
 6.  Application properties `src/main/resources/application.properties`
 
