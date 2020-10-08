@@ -1,5 +1,10 @@
 ## Rest Repository Demo
 
+> Spring DATA-REST is module to create REST endpoints/controller from MODEL class directly!
+
+> No need of DAO classes and SERVICE classes.
+
+
 1.  Create new Spring starter project with following dependencies:
 
     - spring-web
@@ -20,6 +25,9 @@
     spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
     ## DEBUG : display generated SQL queries in CONSOLE
     spring.jpa.show-sql=true
+    ## Disable TABLE DROP/CREATE (Only for Embedded Database)
+    ## The below statement is DEFAULT for all external dbs like MySQL, Oracle, MSSQL & Postgres
+    spring.jpa.hibernate.ddl-auto=none
     spring.h2.console.enabled=true
     ```
 
@@ -51,3 +59,57 @@
     INSERT into accounts values(1002, 'Ramesh', 1000, 'A');
     INSERT into accounts values(1003, 'Ganesh', 10000, 'A');
     ```
+
+5.  Create a model class `Account`
+
+    ```java
+    @Entity
+    @Table(name="accounts")
+    public class Account {
+	
+	@Id @Column(name="acc_no")
+	private Integer accNo;
+	
+	@Column(name="acc_holder")
+	private String accHolder;
+	
+	@Column(name="balance")
+	private Double balance;
+	
+	@Column(name="status",length = 1)
+	private String status;
+    //getters, setters & constructors...
+    }
+    ```
+
+6.  Create a new REST Repository interface `AccountRepository` in package `com.mahendra.restproject1.controllers`
+
+    ```java
+    @RepositoryRestResource(collectionResourceRel = "accounts",path="account")
+    public interface AccountRepository extends PagingAndSortingRepository<Account, Integer> {
+
+    }
+    ```
+
+7.  Run application once again, and try visiting URL:
+
+    http://localhost:8080/account/
+    http://localhost:8080/account/1001
+
+
+8.  Using Postman create POST request
+
+    POST http://localhost:8080/account/
+
+    Request body [Raw, JSON]
+    
+    ```json
+    {
+    "accNo": 1004, 
+    "accHolder": "Suresh",
+    "balance": 10000.0,
+    "status": "A"
+    }
+    ```
+
+9.  Test using URL: http://localhost:8080/account/1004
