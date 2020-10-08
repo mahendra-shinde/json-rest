@@ -113,3 +113,39 @@
     ```
 
 9.  Test using URL: http://localhost:8080/account/1004
+
+10. Modify the repository class, add new method signature:
+
+    List<Account> findByAccHolder(@RequestParam("accHolder") String accHolder);
+
+11. Run application and visit this URL:
+
+    http://localhost:8080/account/search/findByAccHolder?accHolder=Ramesh
+
+12. Add security module 
+
+13. add default user and password in application.properties
+
+    ```ini
+    spring.security.user.name=mahendra
+    spring.security.user.password=pass@1234
+    ```
+
+14  While making request from postman, provide authentication 'Basic Auth'
+
+15. Create a new Configuration class `SecurityConfig` in base-package
+
+    ```java
+    @EnableWebSecurity
+    @Configuration
+    public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            http.antMatcher("/account**").authorizeRequests().antMatchers("/h2-console").permitAll()
+            .anyRequest().authenticated().and().formLogin().disable();
+        }
+    }
+    ```
+
+16. You should be ABLE TO ACCESS h2-console without login.
