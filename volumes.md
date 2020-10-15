@@ -30,7 +30,7 @@
 3.  Create TWO containers
 
     ```
-    $ docker run -d --name w1 -v c:\app1:/usr/share/nginx/html/  -p 8081:80 nginx
+    $ docker run -d --name w1 -v "c:\app1":/usr/share/nginx/html/  -p 8081:80 nginx
     $ docker run -d --name w2 -v c:\app1:/usr/share/nginx/html/  -p 8082:80 nginx
     ```
 
@@ -43,4 +43,49 @@
     ```
     $ docker stop w1 w2
     $ docker rm w1 w2
+    ```
+
+### Named Volume Demo
+
+1.  Create a new named volume, attach to temporary container for file copy.
+
+    ```
+    $ docker volume create myapp
+    $ docker volume ls
+    ## Newly created volume is MOUNTED at path `/app`
+    $ docker run --name c1 -it --rm -v myapp:/app  nginx bash
+    $ cd /app
+    $ ls
+    ### Expected: no files
+    ```
+
+2.  Open new command prompt and try following commands to copy file.
+
+    ```
+    $ cd \app1
+    $ docker cp index.html c1:/app/
+    $ exit
+    ```
+
+3.  Go back to command prompt from step#1 
+
+    ```
+    $ ls
+    ### Expected: file `index.html`
+    $ exit
+    
+    ```
+
+4.  Create a new Container 'c2' with same named volume:
+
+    ```
+    $ docker run -d --name c2 --rm -v myapp:/usr/share/nginx/html -p 8081:80 nginx
+    ```
+
+5.  Try visiting `http://localhost:8081/` with web browser.
+
+6.  Stop the container
+
+    ```
+    $ docker stop c2
     ```
