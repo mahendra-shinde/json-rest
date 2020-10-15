@@ -43,3 +43,32 @@
     ```
 
 7.  Test the container using web-browser: `http://localhost:8085`
+
+8.  Stop and Remove the Old container
+
+    ```
+    $ docker stop c2
+    $ docker rm c2
+    ```
+
+9.  Now, run a new instance (without index.html) and copy ready-made ROOT.war
+
+    > If you DO NOT HAVE ANY ROOT.war file, you can get one from [SampleApp](https://github.com/mahendra-shinde/docker-demos/raw/master/tomcat/DemoWebApp-0.0.1-SNAPSHOT.war)
+    
+    > Rename the file after download to "ROOT.war"
+
+    ```
+    $ docker run --name c2 -d -p 8085:8080 tomcat:jdk8-openjdk
+    $ docker cp ROOT.war c2:/usr/local/tomcat/webapps/
+    $ docker logs c2
+    ```
+
+
+10. Check the URL `http://localhost:8085/`
+
+11. Stop the delete the container
+
+    ```
+    $ docker stop c2
+    $ docker rm c2
+    ```
