@@ -59,6 +59,7 @@
 
     ```
     $ docker run --name c2 -d -p 8085:8080 tomcat:jdk8-openjdk
+    $ cd \Users\mahendra\Downloads\
     $ docker cp ROOT.war c2:/usr/local/tomcat/webapps/
     $ docker logs c2
     ```
