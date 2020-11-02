@@ -1,0 +1,6 @@
+demo/.mvn/
+demo/src
+demo/HELP.md
+demo/pom.xml
+demo/mvnw*
+demo/.gitignore

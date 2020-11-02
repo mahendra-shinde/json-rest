@@ -24,7 +24,7 @@
     CMD ["java","-version"]
     ```
 
-4.  return to command prompt to build a new image 'japp1'
+4.  Return to command prompt to build a new image 'japp1'
 
     ```
     ## REMEMBER DOT AT THE END !!
@@ -32,3 +32,4 @@
     ## TEST 
     $ docker run --rm japp1  
     ```
+
