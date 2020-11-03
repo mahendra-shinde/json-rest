@@ -21,8 +21,13 @@
     services:
     web:
         image: mahendrshinde/myweb
+        ports:
+        - "80:80"
         deploy:
             replicas: 3
+            placement:
+                constraints:
+                - "node.role==worker"
     ```
 
 6.  Use the "Save" button in editor and close the editor.
@@ -33,4 +38,15 @@
     $ docker stack deploy app1 --compose-file docker-compose.yml
     $ docker stack ls
     $ docker stack ps app1
+    $ docker stack services app1
+    ```
+
+8.  Now, Docker Lab should give you a button with port "80" written on it. use button to open URL to connect service.
+
+9.  Try the URL from command "curl" to check if load balancer is working!
+    
+    > NOTE: Your URL would be different than one shown below!
+
+    ```
+    $ curl http://ip172-18-0-23-buge811qckh0009l0vtg-80.direct.labs.play-with-docker.com/
     ```
